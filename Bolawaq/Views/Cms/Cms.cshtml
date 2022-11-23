@@ -1,0 +1,39 @@
+﻿@model List<Bolawaq.data.Booking>
+@{
+    ViewData["Title"] = "Cms";
+}
+
+<h1>Cms</h1>
+
+<div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">НОМЕР ТАЛОНА</th>
+                <th scope="col">ЦЕЛЬ ПОСЕЩЕНИЯ</th>
+                <th scope="col">ИИН</th>
+                <th scope="col">ДАТА БРОНИРОВАНИЯ</th>
+                <th scope="col">ВРЕМЯ БРОНИРОВАНИЯ</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        @for (int index = 0; index < Model.Count; index++)
+        {
+        <tbody>
+            <tr>
+                    <th scope="row">@Model[index].Id.ToString()</th>
+                    <td>@Model[index].Цель.ToString()</td>
+                    <td>@Model[index].Иин.ToString()</td>
+                    <td>@Model[index].Дата.Value.ToShortDateString().ToString()</td>
+                    <td>@Model[index].Время.Value.TotalHours.ToString():00</td>
+                    <td>@Model[index].Email.ToString()</td>
+            </tr>
+        </tbody>
+        }
+    </table>
+</div>
+<div>
+    <form asp-action="PDF" asp-controller="Cms" method="post">
+        <input type="submit" value="Generate PDF" />
+    </form>
+</div>

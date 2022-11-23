@@ -1,0 +1,66 @@
+﻿
+@model Bolawaq.Models.ViewModels.AddBooking
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<div class="col-md-12">
+    <form asp-action="Booking" asp-controller="Home" method="post">
+        <div asp-validation-summary="All" class="pb-3" style="font-size:18px; font-family:Georgia, serif">
+            <div class="pb-2">
+                <label class="pb-0">Введите ИИН*:</label>
+                <input type="text" asp-for="BookingIIN" class="form-control" placeholder="123456789123" required/>
+            </div>
+
+            <div class="pb-2">
+                <label class="pb-0">Цель посещения*:</label>
+                <p>
+                    <select class="w-100 form-select" asp-for="BookingPurpose" required>
+                        <option value="" selected disabled hidden>Выберите цель посещения</option>
+                        <option value="Для заключения договора на организацию обучения по международной стипендии "Болашак"">
+                            Для заключения договора на организацию обучения по международной стипендии "Болашак"
+                            </option>
+                        <option value="chill">chill</option>
+                    </select>
+                </p>
+            </div>
+
+            <div class="pb-2">
+                <label class="pb-0" for="start">Дата посещения:</label>
+                <p>
+                    <input type="date" class="w-100 form-control" asp-for="BookingDate"
+                       min="2022-11-22" max="2023-11-22" required>
+                </p>
+            </div>
+
+            <div class="pb-2">
+                <label class="pb-0" for="timePurpose">Время посещения*:</label>
+                <p>
+                    <select class="w-100 form-select" asp-for="BookingTime" required>
+                        <option value="" selected disabled hidden>Выберите время</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                    </select>
+                </p>
+            </div>
+
+            <div>
+                <label class="pb-0" for="emailPurpose">E-mail:</label>
+                <input type="email" asp-for="BookingEmail" placeholder="name@example.com" class="form-control"required>
+            </div>
+
+        </div>
+
+        <div>
+            <button class="btn btn-primary btn-lg btn-block w-100" type="submit">Зарбонировать</button>
+        </div>
+    </form>
+</div>
